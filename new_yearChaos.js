@@ -8,20 +8,17 @@ Determine the minimum number of bribes that took place to get to a given queue o
 Print the number of bribes, or, if anyone has bribed more than two people, print Too chaotic.
 */
 
-
 let queue1 = [2, 1, 5, 3, 4];
 let queue2 = [2, 5, 1, 3, 4];
 
 let queue3 = [1, 2, 5, 3, 7, 8, 6, 4];
 let queueTest = [1, 3, 2];
 
-
 // FIRST ATEMPT
 function minimumBribes(q) {
   // Write your code here
   const sameValueIndex = q.map((elem) => elem - 1);
   let result = 0;
-
 
   for (let [index, elem] of sameValueIndex.reverse().entries()) {
     let currentBribe = Math.abs(index - elem);
@@ -50,18 +47,17 @@ console.log(minimumBribes(queue3));
 
 //
 function minimumBribesMessy(q) {
-  let num = 0
-  let chaotic = false
+  let num = 0;
+  let chaotic = false;
   for (let i = q.length - 1; i >= 0; i--) {
-    if (q[i] - i > 3) chaotic = true
+    if (q[i] - i > 3) chaotic = true;
     for (let j = q[i] - 2; j < i; j++) {
-      if (q[j] > q[i]) num++
+      if (q[j] > q[i]) num++;
     }
   }
-  if (chaotic) console.log("Too chaotic")
-  else console.log(num)
+  if (chaotic) console.log("Too chaotic");
+  else console.log(num);
 }
-
 
 // minimumBribesMessy(queue1);
 // minimumBribesMessy(queue2);
